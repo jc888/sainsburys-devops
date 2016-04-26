@@ -1,0 +1,14 @@
+{
+  "name": "sainsbury-webapp",
+  "version": "1.0.0",
+  "description": "sainsburys express server",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": "James Chow",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
