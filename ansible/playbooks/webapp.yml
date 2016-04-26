@@ -1,0 +1,28 @@
+- hosts: webservers
+  tasks:
+    - name: "copy node source files"
+      synchronize:
+        src: ../../webapp
+        dest: /root/src
+        recursive: yes
+        delete: yes
+        rsync_opts:
+          - "--exclude=node_modules"
+
+    - shell: npm install
+      args:
+        chdir: /root/src/webapp
+
+    - name: template in configuration
+      template: src=../templates/config.js dest=/root/src/webapp/config.js
+
+    - name: "Install Forever to run the node application"
+      npm: name=forever global=yes state=present
+
+    - name: "Stop all apps"
+      command: forever stopall
+
+    - name: "Start example Node.js app."
+      command: forever start /root/src/webapp/index.js
+  roles:
+    - williamyeh.nodejs

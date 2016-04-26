@@ -1,0 +1,6 @@
+[webservers]
+webapp_1 ansible_ssh_host=192.168.99.100 ansible_ssh_port=222
+webapp_2 ansible_ssh_host=192.168.99.100 ansible_ssh_port=223
+
+[loadbalancer]
+192.168.99.100:224

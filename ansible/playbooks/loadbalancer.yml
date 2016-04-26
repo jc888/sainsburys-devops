@@ -1,0 +1,11 @@
+- hosts: loadbalancer
+  roles:
+    - geerlingguy.nginx
+  tasks:
+    - name: template in configuration
+      template: src=../templates/default dest=/etc/nginx/sites-available/default
+
+    - name: Run NGINX as a servicevagrant
+      service:
+        name: nginx
+        state: started
