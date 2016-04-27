@@ -1,6 +1,6 @@
 upstream node_cluster {  
-    server 192.168.99.100:81;      # Node.js instance 1
-    server 192.168.99.100:82;      # Node.js instance 2
+    server webapp_1:80;      # Node.js instance 1
+    server webapp_2:80;      # Node.js instance 2
 }
 
 server {  

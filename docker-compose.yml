@@ -6,42 +6,49 @@ services:
     expose:
      - "22"
     ports:
-     - "221:22"
+     - "2212:22"
+    links:
+     - "webapp_1"
+     - "webapp_2"
+     - "loadbalancer"
     working_dir: /root/shared/ansible
     volumes:
-     - /home/vagrant/shared:/root/shared
+     - .:/root/shared
      - /var/run/docker.sock:/var/run/docker.sock
 
   jenkins:
-   image: jenkins
-   ports:
-     - "8081:8080"
+    image: jenkins
+    links:
+     - "slave"
+    ports:
+     - "8082:8080"
      - "50000:50000"
-   volumes:
+    volumes:
      - ./jenkins:/var/jenkins_home
 
   webapp_1:
     image: jc888/base
-    mem_limit: 512m
     expose:
      - "22"
     ports:
-     - "81:80"
-     - "222:22"
+     - "8083:80"
+     - "2213:22"
 
   webapp_2:
     image: jc888/base
-    mem_limit: 512m
     expose:
      - "22"
     ports:
-     - "82:80"
-     - "223:22"
+     - "8084:80"
+     - "2214:22"
 
   loadbalancer:
     image: jc888/base
+    links:
+     - "webapp_1"
+     - "webapp_2"
     expose:
      - "22"
     ports:
-     - "80:80"
-     - "224:22"
+     - "8081:80"
+     - "2211:22"
