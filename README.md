@@ -1,7 +1,9 @@
 # Sainsburys devops test
 
 
-# Sandbox environment
+### Sandbox environment
+
+##### Mac/Windows
 
 Windows/Mac require a guest VM to run the application. So please install Vagrant
 
@@ -31,7 +33,7 @@ http://localhost:8081/
 
 ```
 
-Linux
+### Linux
 
 install docker and docker-compose 
 
@@ -49,7 +51,7 @@ cd <repo dir>
 ```
 
 
-Automated CI build
+### Automated CI build
 
 Jenkins, is installed to do automated builds every 2 minutes if it detects change to the repo.
 Or you can manually invoke
@@ -71,5 +73,9 @@ http://localhost:8082/job/webapp_deploy/
 ```
 
 
-Caveats
+#### Caveats
 This is not my normal deployment strategy, I would favour building docker images precompiled with the application code, and then using ansible to deploy to host machines. Rather then ssh into empty docker containers, and installing software. But this ansible scripting strategy can be applied for both hypervisor containers, or full VMs.
+
+Also I wouldn't include public keys in the repo, ansible actully has a encryption strategy to store secrets in source control, I didn't get round to using it unfortunatly.
+
+If I have time, I'll write an automated test suite to confirm the round robin request requirements. 
