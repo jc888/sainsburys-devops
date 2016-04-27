@@ -1,0 +1,22 @@
+Started by user [8mha:AAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyBEgZu/dLi1CL9xJTczDwAS4B5WsAAAAA=[0msainsburys admin
+Building in workspace /var/jenkins_home/workspace/webapp_deploy
+Cloning the remote Git repository
+Cloning repository ssh://root@slave/root/shared/.git
+ > git init /var/jenkins_home/workspace/webapp_deploy # timeout=10
+Fetching upstream changes from ssh://root@slave/root/shared/.git
+ > git --version # timeout=10
+using GIT_SSH to set credentials 
+ > git -c core.askpass=true fetch --tags --progress ssh://root@slave/root/shared/.git +refs/heads/*:refs/remotes/origin/*
+ > git config remote.origin.url ssh://root@slave/root/shared/.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url ssh://root@slave/root/shared/.git # timeout=10
+Fetching upstream changes from ssh://root@slave/root/shared/.git
+using GIT_SSH to set credentials 
+ > git -c core.askpass=true fetch --tags --progress ssh://root@slave/root/shared/.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 33994bae65ff0d4d217c6bd058a5287b64e15b84 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 33994bae65ff0d4d217c6bd058a5287b64e15b84
+First time build. Skipping changelog.
+Finished: SUCCESS

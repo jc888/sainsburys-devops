@@ -1,0 +1,194 @@
+Started by user [8mha:AAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyBEgZu/dLi1CL9xJTczDwAS4B5WsAAAAA=[0msainsburys admin
+Building in workspace /var/jenkins_home/workspace/webapp_deploy
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url ssh://root@slave/root/shared/.git # timeout=10
+Fetching upstream changes from ssh://root@slave/root/shared/.git
+ > git --version # timeout=10
+using GIT_SSH to set credentials 
+ > git -c core.askpass=true fetch --tags --progress ssh://root@slave/root/shared/.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 33994bae65ff0d4d217c6bd058a5287b64e15b84 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 33994bae65ff0d4d217c6bd058a5287b64e15b84
+ > git rev-list 33994bae65ff0d4d217c6bd058a5287b64e15b84 # timeout=10
+executing script:
+
+#!/bin/bash
+cd shared/ansible
+ansible-playbook main.yml
+
+PLAY [webservers] **************************************************************
+
+TASK [setup] *******************************************************************
+ok: [webapp_2]
+ok: [webapp_1]
+
+TASK [williamyeh.nodejs : set role variables, if necessary] ********************
+included: /root/shared/ansible/roles/williamyeh.nodejs/tasks/set-role-variables.yml for webapp_1, webapp_2
+
+TASK [williamyeh.nodejs : set nodejs_version, if neither version variables are defined] ***
+ok: [webapp_1]
+ok: [webapp_2]
+
+TASK [williamyeh.nodejs : set nodejs_version, if neither version variables are defined] ***
+skipping: [webapp_1]
+skipping: [webapp_2]
+
+TASK [williamyeh.nodejs : delegate to APT system for installation] *************
+included: /root/shared/ansible/roles/williamyeh.nodejs/tasks/use-apt.yml for webapp_1, webapp_2
+
+TASK [williamyeh.nodejs : install add-apt-repository and https binaries for Ansible to work] ***
+ok: [webapp_1] => (item=[u'python-software-properties', u'apt-transport-https'])
+ok: [webapp_2] => (item=[u'python-software-properties', u'apt-transport-https'])
+
+TASK [williamyeh.nodejs : install tools for compiling native addons from npm] **
+ok: [webapp_2] => (item=[u'build-essential'])
+ok: [webapp_1] => (item=[u'build-essential'])
+
+TASK [williamyeh.nodejs : add NodeSource key] **********************************
+ok: [webapp_1]
+ok: [webapp_2]
+
+TASK [williamyeh.nodejs : add NodeSource repository for Node.js 5.0] ***********
+skipping: [webapp_1] => (item=deb) 
+skipping: [webapp_2] => (item=deb) 
+skipping: [webapp_1] => (item=deb-src) 
+skipping: [webapp_2] => (item=deb-src) 
+
+TASK [williamyeh.nodejs : add NodeSource repository for Node.js 4.0] ***********
+skipping: [webapp_1] => (item=deb) 
+skipping: [webapp_2] => (item=deb) 
+skipping: [webapp_1] => (item=deb-src) 
+skipping: [webapp_2] => (item=deb-src) 
+
+TASK [williamyeh.nodejs : add NodeSource repository for Node.js 0.12] **********
+ok: [webapp_1] => (item=deb)
+ok: [webapp_2] => (item=deb)
+ok: [webapp_2] => (item=deb-src)
+ok: [webapp_1] => (item=deb-src)
+
+TASK [williamyeh.nodejs : add NodeSource repository for Node.js 0.10] **********
+skipping: [webapp_1] => (item=deb) 
+skipping: [webapp_2] => (item=deb) 
+skipping: [webapp_1] => (item=deb-src) 
+skipping: [webapp_2] => (item=deb-src) 
+
+TASK [williamyeh.nodejs : install Node.js with specific version] ***************
+ok: [webapp_1]
+ok: [webapp_2]
+
+TASK [williamyeh.nodejs : add NodeSource repository for io.js 3.x] *************
+skipping: [webapp_1] => (item=deb) 
+skipping: [webapp_2] => (item=deb) 
+skipping: [webapp_1] => (item=deb-src) 
+skipping: [webapp_2] => (item=deb-src) 
+
+TASK [williamyeh.nodejs : add NodeSource repository for io.js 2.x (deb)] *******
+skipping: [webapp_2] => (item=deb) 
+skipping: [webapp_1] => (item=deb) 
+skipping: [webapp_2] => (item=deb-src) 
+skipping: [webapp_1] => (item=deb-src) 
+
+TASK [williamyeh.nodejs : add NodeSource repository for io.js 1.x] *************
+skipping: [webapp_1] => (item=deb) 
+skipping: [webapp_1] => (item=deb-src) 
+skipping: [webapp_2] => (item=deb) 
+skipping: [webapp_2] => (item=deb-src) 
+
+TASK [williamyeh.nodejs : install io.js with specific version] *****************
+skipping: [webapp_1]
+skipping: [webapp_2]
+
+TASK [williamyeh.nodejs : delegate to YUM system for installation] *************
+skipping: [webapp_1]
+skipping: [webapp_2]
+
+TASK [copy node source files] **************************************************
+changed: [webapp_2]
+changed: [webapp_1]
+
+TASK [command] *****************************************************************
+changed: [webapp_2]
+changed: [webapp_1]
+
+TASK [template in configuration] ***********************************************
+changed: [webapp_2]
+changed: [webapp_1]
+
+TASK [Install Forever to run the node application] *****************************
+ok: [webapp_1]
+ok: [webapp_2]
+
+TASK [Stop all apps] ***********************************************************
+changed: [webapp_1]
+changed: [webapp_2]
+
+TASK [Start example Node.js app.] **********************************************
+changed: [webapp_1]
+changed: [webapp_2]
+
+PLAY [loadbalancer] ************************************************************
+
+TASK [setup] *******************************************************************
+ok: [loadbalancer]
+
+TASK [geerlingguy.nginx : Include OS-specific variables.] **********************
+ok: [loadbalancer]
+
+TASK [geerlingguy.nginx : Define nginx_user.] **********************************
+ok: [loadbalancer]
+
+TASK [geerlingguy.nginx : include] *********************************************
+skipping: [loadbalancer]
+
+TASK [geerlingguy.nginx : include] *********************************************
+included: /root/shared/ansible/roles/geerlingguy.nginx/tasks/setup-Ubuntu.yml for loadbalancer
+
+TASK [geerlingguy.nginx : Add PPA for Nginx.] **********************************
+skipping: [loadbalancer]
+
+TASK [geerlingguy.nginx : Ensure nginx will reinstall if the PPA was just added.] ***
+skipping: [loadbalancer]
+
+TASK [geerlingguy.nginx : include] *********************************************
+included: /root/shared/ansible/roles/geerlingguy.nginx/tasks/setup-Debian.yml for loadbalancer
+
+TASK [geerlingguy.nginx : Update apt cache.] ***********************************
+ok: [loadbalancer]
+
+TASK [geerlingguy.nginx : Ensure nginx is installed.] **************************
+ok: [loadbalancer]
+
+TASK [geerlingguy.nginx : include] *********************************************
+included: /root/shared/ansible/roles/geerlingguy.nginx/tasks/vhosts.yml for loadbalancer
+
+TASK [geerlingguy.nginx : Remove default nginx vhost config file (if configured).] ***
+skipping: [loadbalancer]
+
+TASK [geerlingguy.nginx : Add managed vhost config file (if any vhosts are configured).] ***
+skipping: [loadbalancer]
+
+TASK [geerlingguy.nginx : Remove managed vhost config file (if no vhosts are configured).] ***
+ok: [loadbalancer]
+
+TASK [geerlingguy.nginx : Copy nginx configuration in place.] ******************
+ok: [loadbalancer]
+
+TASK [geerlingguy.nginx : Ensure nginx is started and enabled to start at boot.] ***
+changed: [loadbalancer]
+
+TASK [template in configuration] ***********************************************
+ok: [loadbalancer]
+
+TASK [Run NGINX as a servicevagrant] *******************************************
+ok: [loadbalancer]
+
+PLAY RECAP *********************************************************************
+loadbalancer               : ok=13   changed=1    unreachable=0    failed=0   
+webapp_1                   : ok=15   changed=5    unreachable=0    failed=0   
+webapp_2                   : ok=15   changed=5    unreachable=0    failed=0   
+
+[SSH] exit-status: 0
+Finished: SUCCESS

@@ -1,0 +1,40 @@
+Started by user [8mha:AAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyBEgZu/dLi1CL9xJTczDwAS4B5WsAAAAA=[0msainsburys admin
+Building in workspace /var/jenkins_home/workspace/webapp_deploy
+[ssh-agent] Looking for ssh-agent implementation...
+[ssh-agent]   Java/JNR ssh-agent
+[ssh-agent] FATAL: Could not find a suitable ssh-agent provider
+[ssh-agent] Diagnostic report
+[ssh-agent] * Java/JNR ssh-agent
+[ssh-agent]     java.io.IOException: bind failed: Operation not permitted
+[ssh-agent]     	at jnr.unixsocket.UnixServerSocket.bind(UnixServerSocket.java:53)
+[ssh-agent]     	at jnr.unixsocket.UnixServerSocket.bind(UnixServerSocket.java:43)
+[ssh-agent]     	at com.cloudbees.jenkins.plugins.sshagent.jna.AgentServer.start(AgentServer.java:83)
+[ssh-agent]     	at com.cloudbees.jenkins.plugins.sshagent.jna.JNRRemoteAgent.<init>(JNRRemoteAgent.java:70)
+[ssh-agent]     	at com.cloudbees.jenkins.plugins.sshagent.jna.JNRRemoteAgentStarter.call(JNRRemoteAgentStarter.java:68)
+[ssh-agent]     	at com.cloudbees.jenkins.plugins.sshagent.jna.JNRRemoteAgentStarter.call(JNRRemoteAgentStarter.java:39)
+[ssh-agent]     	at hudson.remoting.LocalChannel.call(LocalChannel.java:45)
+[ssh-agent]     	at com.cloudbees.jenkins.plugins.sshagent.jna.JNRRemoteAgentFactory.start(JNRRemoteAgentFactory.java:62)
+[ssh-agent]     	at com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper$SSHAgentEnvironment.<init>(SSHAgentBuildWrapper.java:360)
+[ssh-agent]     	at com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper.createSSHAgentEnvironment(SSHAgentBuildWrapper.java:248)
+[ssh-agent]     	at com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper.preCheckout(SSHAgentBuildWrapper.java:225)
+[ssh-agent]     	at jenkins.scm.SCMCheckoutStrategy.preCheckout(SCMCheckoutStrategy.java:76)
+[ssh-agent]     	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:528)
+[ssh-agent]     	at hudson.model.Run.execute(Run.java:1738)
+[ssh-agent]     	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:43)
+[ssh-agent]     	at hudson.model.ResourceController.execute(ResourceController.java:98)
+[ssh-agent]     	at hudson.model.Executor.run(Executor.java:410)
+FATAL: [ssh-agent] Unable to start agent
+[8mha:AAAAWB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P08vOT+vOD8nVc8DzHWtSE4tKMnMz/PLL0ldFVf2c+b/lb5MDAwVRQxSaBqcITRIIQMEMIIUFgAAckCEiWAAAAA=[0mhudson.util.IOException2: [ssh-agent] Unable to start agent
+	at com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper.createSSHAgentEnvironment(SSHAgentBuildWrapper.java:255)
+	at com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper.preCheckout(SSHAgentBuildWrapper.java:225)
+	at jenkins.scm.SCMCheckoutStrategy.preCheckout(SCMCheckoutStrategy.java:76)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:528)
+	at hudson.model.Run.execute(Run.java:1738)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:43)
+	at hudson.model.ResourceController.execute(ResourceController.java:98)
+	at hudson.model.Executor.run(Executor.java:410)
+Caused by: java.lang.RuntimeException: [ssh-agent] Could not find a suitable ssh-agent provider.
+	at com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper$SSHAgentEnvironment.<init>(SSHAgentBuildWrapper.java:378)
+	at com.cloudbees.jenkins.plugins.sshagent.SSHAgentBuildWrapper.createSSHAgentEnvironment(SSHAgentBuildWrapper.java:248)
+	... 7 more
+Finished: FAILURE
